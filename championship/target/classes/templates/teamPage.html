@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script src="/JS/teamTable.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="table table-success" id="teamTableContainer"></div>
+</div>
+<br>
+<div class="container">
+<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#addForm" aria-expanded="true" aria-controls="addForm">Add Team</button>
+<br><br>
+<form class="addForm collapse" id="addForm" novalidate>
+    <div class="form-floating">
+    <input type="text" id="name" placeholder="Name" required class="form-control">
+    <label for="name" class="form-label">Name</label>
+    </div><br>
+    <div class="form-floating">
+    <input type="text" id="country" placeholder="Country" required class="form-control">
+    <label for="country" class="form-label">Country</label>
+    </div><br>
+    <button type="button" class="btn btn-success mb-3" id="submitFormButton"  onclick="createTeam()" >Add Team</button>
+</form>
+<script>
+    const form = document.querySelector('#addForm');
+    form.addEventListener('submit', e => {
+        if(!form.checkValidity()){
+            event.preventDefault();
+        }
+        form.classList.add('was-validated');
+    });
+</script>
+    </div>
+<div class="container">
+<button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#deleteForm"
+        aria-expanded="true" aria-controls="deleteForm">Delete Team</button>
+<br><br>
+<form class="deleteForm collapse" id="deleteForm">
+    <div class="form-floating">
+        <input type="number" id="deleteId" placeholder="Id" class="form-control" required>
+        <label for="deleteId" class="form-label">Id</label>
+    </div><br>
+    <button type="button" class="btn btn-success mb-3" id="deleteFormButton"  onclick="deleteTeam()">Delete Team</button>
+    <button type="button" class="btn btn-success mb-3" id="deleteAllButton"  onclick="deleteAllTeams()">Delete All Teams</button>
+</form>
+</div>
+</body>
+</html>
